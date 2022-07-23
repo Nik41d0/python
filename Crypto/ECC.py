@@ -2,7 +2,6 @@ import collections
 import random
 
 EllipticCurve = collections.namedtuple('EllipticCurve', 'name p a b g n h')
-
 curve = EllipticCurve(
     'secp256k1',
     # Field characteristic.
@@ -39,7 +38,6 @@ def inverse_mod(k, p):
     return x % p
 
 
-
 def is_on_curve(point):
     """Returns True if the given point lies on the elliptic curve."""
     if point is None:
@@ -48,7 +46,7 @@ def is_on_curve(point):
     x, y = point
     return (y * y - x * x * x - curve.a * x - curve.b) % curve.p == 0
 
-
+  
 def point_neg(point):
     assert is_on_curve(point)
     if point is None:
@@ -109,7 +107,6 @@ def make_keypair():
     """Generates a random private-public key pair."""
     private_key = curve.n
     public_key = scalar_mult(private_key, curve.g)
-    
     return private_key, public_key
 
 private_key, public_key = make_keypair()
