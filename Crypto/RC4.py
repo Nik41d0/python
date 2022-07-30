@@ -11,7 +11,6 @@ def crypt(data,key) :
     j = 0
     for i in range(256) :
         j = (j + s[i] + key[i % len(key)]) % 256
-        print(j)
         s[i], s[j] = s[j], s[i]
     i = 0
     j = 0
